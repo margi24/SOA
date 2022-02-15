@@ -1,0 +1,48 @@
+version: "3"
+services:
+  usersmicroservice:
+    image: usersmicroservice:v1
+    ports:
+      - "8090:8090"
+
+    networks:
+      - app_net
+  citybreaksmicroservice:
+    image: citybreaksmicroservice:v1
+    ports:
+      - "8091:8091"
+
+    networks:
+      - app_net
+  apigateway:
+    image: apigateway:v1
+    ports:
+      - "8094:8094"
+
+    networks:
+      - app_net
+    depends_on:
+      - usersmicroservice
+      - citybreaksmicroservice
+  userdashboard:
+    image: userdashboard:v1
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    depends_on:
+      - apigateway
+
+    networks:
+      - app_net
+  loginwindow:
+    image: loginwindow:v1
+    stdin_open: true
+    ports:
+      - "4200:4200"
+    depends_on:
+      - userdashboard
+    networks:
+      - app_net
+networks:
+  app_net:
+    driver: bridge

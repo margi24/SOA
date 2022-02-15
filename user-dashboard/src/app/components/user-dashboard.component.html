@@ -1,0 +1,59 @@
+<h1></h1>
+<form #loginForm="ngForm" (ngSubmit)="onAdd()" style="margin-left: 10px;">
+  <mat-form-field style="margin-left: 5px;">
+    <input matInput placeholder="City" [(ngModel)]="city" name="city" required>
+    <mat-error>
+      Please provide a valid city
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-left: 15px;">
+    <input matInput placeholder="Date" [(ngModel)]="date" name="date" required>
+    <mat-error>
+      Please provide a valid date
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-left: 15px;">
+    <input matInput placeholder="Cost" [(ngModel)]="cost" name="cost" required>
+    <mat-error>
+      Please provide a valid cost
+    </mat-error>
+  </mat-form-field>
+  <div class="d-flex .flex-row bd-highlight mb-3 mt-4" style="display: inline; margin-left: 20px;">
+    <button mat-raised-button color="primary">Add city break</button>
+  </div>
+</form>
+
+<form #emailForm="ngForm" (ngSubmit)="onSend()" style="margin-left: 10px;">
+  <mat-form-field style="margin-left: 5px;">
+    <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
+    <mat-error>
+      Please provide a valid city
+    </mat-error>
+  </mat-form-field>
+  <div class="d-flex .flex-row bd-highlight mb-3 mt-4" style="display: inline; margin-left: 20px;">
+    <button mat-raised-button color="primary">Send email</button>
+  </div>
+</form>
+
+<div *ngIf="!cityBreaks">
+  <span class="spinner-border spinner-border-lg align-center"></span>
+</div>
+
+
+<div *ngFor="let datum of cityBreaks">
+  <mat-card class="mat-elevation-z4" style="margin: 10px;">
+    <mat-card-title>
+      City {{datum.town}}
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        Date: {{datum.date}}
+      </p>
+    </mat-card-content>
+    <mat-card-content>
+      <p>
+        Cost: {{datum.cost}}€
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
