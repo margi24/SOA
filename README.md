@@ -1,6 +1,8 @@
 # SOA
 Application using micro frontends and microservices through secured API calls.
+
 run docker build -t image-name . for each project
+
 run docker-compose up to create the containers and start thhe application.
 # Diagrams
 c4 context diagram
@@ -12,7 +14,9 @@ UML diagram of the frontend components
 
 # SOA design patterns
 Decompose by Business Capability - The microservices are loosely coupled and each serves a different business object. One holds the user data and the other one has the city break data.
+
 Sidecar Pattern - All the components are deployed into separate isolated containers that have the same lifecycle, functioning independently but providing supporting features.
+
 API Gateway - The API gateway is the single entry point for the microservices calls. It routes requests to the concerned microservice. All clients call the API gateway.
 # Web server (Node)
 The web server has 3 parts. One microservice is the user service that holds the users information and exposes a secured REST API to perform the authentication.
